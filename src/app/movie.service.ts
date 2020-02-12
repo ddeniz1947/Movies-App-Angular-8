@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Movie } from "./movie";
 import { Movies } from "./movie.datasource";
-
+import {Observable,of} from 'rxjs';
 
 @Injectable({
   providedIn: "root" //Servise nerelerin erişebileceğini gösterir
@@ -11,7 +11,7 @@ import { Movies } from "./movie.datasource";
 export class MovieService {
   constructor() {}
 
-  getMovies(): Movie[] {
-    return Movies;
+  getMovies(): Observable<Movie[]> {
+    return of(Movies);
   }
 }
