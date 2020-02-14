@@ -1,5 +1,3 @@
-<movie-detail [movieSel]="selectedMovie"></movie-detail>
-
 
 <div class="card">
   <div class="card-header">
@@ -8,9 +6,8 @@
   <ul class="list-group list-group-flush">
     <li
       *ngFor="let movie of movies"
-      (click)="onSelect(movie)"
       class="list-group-item"
-      [class.active]="movie === selectedMovie"
+      routerLink='/detail/{{movie.id}}'
     >
       <span class="badge badge-primary">{{ movie.id }}</span
       >{{ movie.name }}

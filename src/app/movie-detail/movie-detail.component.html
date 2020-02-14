@@ -1,5 +1,5 @@
 
-<div class="card" *ngIf="movieSel">
+<div class="card my-3" *ngIf="movieSel">
     <div class="card-body">
       <span class="badge badge-warning">
         id:{{ movieSel.id }} name: {{ movieSel.name }}
@@ -9,6 +9,9 @@
         <div class="input-group-append">
           <button class="btn btn-outline-secondary" type="button">Update</button>
         </div>
+      </div>
+      <div class="card-text">
+        Description : {{movieSel.description}}
       </div>
     </div>
   </div>

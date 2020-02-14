@@ -1,0 +1,23 @@
+<div class="card my-2" *ngFor="let movie of movies">
+  <div class="row">
+    <div class="col-md-3">
+      <img src="assets/img/{{ movie.imageUrl }}" class="card-img" alt="" />
+    </div>
+    <div class="col-md-9">
+      <div class="card-body">
+        <h5 class="card-title">
+            <a routerLink='/detail/{{movie.id}}'>{{movie.name}}</a>
+        </h5>
+        <p class="card-text">
+            {{movie.description}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="movieLength>5" class="text-center my-2">
+  <a routerLink="/movies" class="btn btn-outline-primary">
+     More Movies
+  </a>
+</div>
