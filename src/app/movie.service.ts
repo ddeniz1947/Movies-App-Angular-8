@@ -3,6 +3,7 @@ import { Movie } from "./movie";
 import { Movies } from "./movie.datasource";
 import {Observable,of} from 'rxjs';
 import { LoggingService } from './logging.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: "root" //Servise nerelerin erişebileceğini gösterir
@@ -10,16 +11,23 @@ import { LoggingService } from './logging.service';
 
 
 export class MovieService {
-  constructor(private logginService: LoggingService) {}
+  private apiMoviesUrl = 'api/movies';
 
+  constructor(
+    private logginService: LoggingService,
+    private http:HttpClient
+    ) {}
+ 
 
   getMovies(): Observable<Movie[]> {
+  //  HttpClient.get('') Hazır api için kullanım
+
     this.logginService.add('Movie Service: listing movies');
-    return of(Movies);
+    return this.http.get<Movie[]>(this.apiMoviesUrl);
   }
 
   getMovie(id):Observable<Movie>{
     this.logginService.add('MovieService: Get Movie Detail By Id='+id);
-   return of(Movies.find(movie=>movie.id === id));
+    return this.http.get<Movie>(this.apiMoviesUrl+'/'+id);
   }
 }
