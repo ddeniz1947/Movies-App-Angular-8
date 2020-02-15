@@ -25,4 +25,12 @@ export class MoviesComponent {
       this.movies = movies;
     });
   }
+
+  add(name:string,imageUrl:string,description:string):void{
+      this.movieService.add({
+        name,
+        imageUrl,
+        description
+      } as Movie).subscribe(movie=> this.movies.push(movie));
+  }
 }

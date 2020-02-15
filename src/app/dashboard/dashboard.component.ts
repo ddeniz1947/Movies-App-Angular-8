@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
 
   getMovies(): void {
     this.movieService.getMovies().subscribe(movies => {
-      this.movies = movies.slice(0, 5);
+      this.movies = movies.slice(0, 10);
       this.movieLength = movies.length;
     });
   }
