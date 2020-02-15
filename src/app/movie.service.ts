@@ -3,7 +3,7 @@ import { Movie } from "./movie";
 import { Movies } from "./movie.datasource";
 import {Observable,of} from 'rxjs';
 import { LoggingService } from './logging.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: "root" //Servise nerelerin erişebileceğini gösterir
@@ -29,5 +29,12 @@ export class MovieService {
   getMovie(id):Observable<Movie>{
     this.logginService.add('MovieService: Get Movie Detail By Id='+id);
     return this.http.get<Movie>(this.apiMoviesUrl+'/'+id);
+  }
+
+  update(movie: Movie):Observable<any>{
+    const httpOptions={
+      headers: new HttpHeaders({'Content-Type' : 'application/json'})
+    }
+    return this.http.put(this.apiMoviesUrl,movie,httpOptions)
   }
 }
