@@ -41,4 +41,8 @@ export class MovieService {
   add(movie: Movie):Observable<Movie> {
     return this.http.post<Movie>(this.apiMoviesUrl,movie);
   }
+
+  delete(movie : Movie) : Observable<Movie>{
+return this.http.delete<Movie>(this.apiMoviesUrl+'/'+movie.id);
+  }
 }
